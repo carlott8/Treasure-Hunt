@@ -204,6 +204,9 @@ cython_debug/
 # secrets
 .env
 
+# questions
+.json
+
 # Marimo
 marimo/_static/
 marimo/_lsp/
