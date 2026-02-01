@@ -205,7 +205,7 @@ cython_debug/
 .env
 
 # questions
-.json
+*.json
 
 # Marimo
 marimo/_static/
