@@ -67,6 +67,30 @@ async def text_message(status, previous_answer):
 
     return ans, previous_answer
 
+################## dynamic solution: 
+"""
+async def text_message(status, previous_answer):
+    with open(config.questions_path, "r", encoding="utf-8") as f:
+        questions = json.load(f)
+
+    if previous_answer == "wrong":
+        return "Sbagliato, prova ancora", previous_answer
+
+    key = f"d{status}"
+
+    if key in questions:
+        ans = questions[key]
+    elif "final" in questions:
+        ans = questions["final"]
+        status = 0
+        previous_answer = "right"
+    else:
+        ans = "Errore: domanda non trovata"
+
+    return ans, previous_answer
+"""
+######################################################
+
 async def answer(update: Update, context: ContextTypes.DEFAULT_TYPE):
     with open(config.answers_path, "r", encoding="utf-8") as f:
         answers = json.load(f)

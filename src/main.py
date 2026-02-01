@@ -19,16 +19,15 @@ logger = logging.getLogger(__name__)
 def main() -> None:
     """Start the bot."""
 
-    random.seed(8)
-    # Create the Application and pass it your bot's token.
+    random.seed(16)
+    # Create the Application 
     application = Application.builder().token(TOKEN).build()
 
-    # on different commands - answer in Telegram
+    # commands: start and help
     application.add_handler(CommandHandler("start", start))
     application.add_handler(CommandHandler("help", help_command))
 
-    # on non command i.e message - echo the message on Telegram
-    #application.add_handler(MessageHandler(filters.TEXT & ~filters.COMMAND, echo))
+    # else
     application.add_handler(MessageHandler(filters.TEXT & ~filters.COMMAND, answer))
 
 
